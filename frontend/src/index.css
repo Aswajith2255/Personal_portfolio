@@ -1,6 +1,7 @@
 :root {
-  --bg-primary: #0a0a1a;
-  --bg-secondary: #12122b;
+  --bg-primary: #404c58;
+  --bg-gradient: radial-gradient(circle at top right, #7272b4 0%, #05050f 100%);
+  --bg-secondary: #31313f;
   --accent: #00bcd4;
   --text-primary: #ffffff;
   --text-secondary: #a0a0b0;
@@ -21,9 +22,11 @@ html {
 
 body {
   font-family: var(--font-base);
-  background-color: var(--bg-primary);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 a {
