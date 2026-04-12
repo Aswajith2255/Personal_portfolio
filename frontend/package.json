@@ -1,13 +1,15 @@
 {
-  "homepage": "https://your-username.github.io/Personal_portfolio",
+  "homepage": "https://Aswajith2255.github.io/Personal_portfolio",
   "name": "portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
