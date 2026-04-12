@@ -55,7 +55,7 @@
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: white;
   font-weight: 500;
   font-size: 0.95rem;
   transition: var(--transition);
