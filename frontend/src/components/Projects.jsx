@@ -50,7 +50,7 @@ export default function Projects() {
       tags: ['React', 'Javascript', 'Html', 'Css',],
       image: img5,
       demoUrl: 'https://weatherapp-seven-rho.vercel.app/',
-      githubUrl: 'https://github.com/Aswajith2255/Weatherapp',
+      githubUrl: 'https://github.com/Aswajith2255/Weatherapp'
     }
     
   ];
