@@ -42,7 +42,17 @@ export default function Projects() {
       image: img4,
       demoUrl: '',
       githubUrl: 'https://github.com/Aswajith2255/e-commerce'
+    },
+        {
+      id: 5,
+      title: 'Weatherapp Website',
+      description: 'Weatherapp website using web application to get the weather of any city.',
+      tags: ['React', 'Javascript', 'Html', 'Css',],
+      image: img5,
+      demoUrl: 'https://weatherapp-seven-rho.vercel.app/',
+      githubUrl: 'https://github.com/Aswajith2255/Weatherapp',
     }
+    
   ];
 
   return (
