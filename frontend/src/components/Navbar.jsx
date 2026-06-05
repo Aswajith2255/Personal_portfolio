@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-import resumeFile from '../assets/Aswajith resume.pdf';
+import resumeFile from '../assets/Aswajith P P resume.pdf';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function Navbar() {
 
         <div className="navbar-right">
           <div className="navbar-action">
-            <a href={resumeFile} download="Aswajith resume.pdf" className="btn-resume">
+            <a href={resumeFile} download="Aswajith P P resume.pdf" className="btn-resume">
               Download Resume
             </a>
           </div>
