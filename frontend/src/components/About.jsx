@@ -15,8 +15,7 @@ export default function About() {
           <h1 className="name">Developer</h1>
           {/* <h2 className="title">Full Stack Software Engineer</h2> */}
           <p className="bio">
-            Iam Aswajith pp, a BCA student passionate about Web development. Skilled in HTML,CSS,JS, and React, with a strong interest
-            in building data-driven applications. Eager to learn and contribute to real-world projects.
+           BCA graduate with hands-on experience in Frontend Development and React.js. Skilled in developing responsive and interactive web applications using HTML, CSS, JavaScript, React.js, and Bootstrap. Seeking an entry-level Frontend Developer or React Developer role to apply technical skills, contribute to innovative projects, and grow within a dynamic organization.
           </p>
           {/* <div className="highlight-stats">
             <div className="stat">
