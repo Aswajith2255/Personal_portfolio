@@ -13,7 +13,7 @@ export default function Skills() {
     // },
     {
       title: 'Tools & DevOps',
-      skills: ['Git', 'GitHub',]
+     skills: ['Git', 'GitHub', "Vercel", "Netlify"]
     }
   ];
 
