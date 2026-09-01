@@ -2,10 +2,11 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(11, 15, 25, 0.85);
+  background-color: rgba(10, 14, 23, 0.85);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-container {
@@ -24,8 +25,13 @@
   color: var(--text-primary);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  white-space: nowrap;
   transition: var(--transition);
+}
+
+.logo-name {
+  white-space: nowrap;
 }
 
 .navbar-logo .logo-badge {
@@ -37,6 +43,7 @@
   padding: 2px 8px;
   border-radius: 12px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .navbar-logo a:hover {
@@ -45,6 +52,7 @@
 
 .navbar-links {
   display: flex;
+  align-items: center;
   gap: 28px;
 }
 
@@ -54,6 +62,7 @@
   font-size: 0.95rem;
   transition: var(--transition);
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -78,6 +87,7 @@
 .btn-resume {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   background: rgba(16, 185, 129, 0.1);
   color: var(--accent);
   border: 1px solid var(--accent);
@@ -87,6 +97,7 @@
   font-size: 0.9rem;
   transition: var(--transition);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .btn-resume:hover {
@@ -97,13 +108,17 @@
 
 .mobile-menu-btn {
   display: none;
+  background: transparent;
+  border: none;
   cursor: pointer;
   color: var(--text-primary);
+  padding: 6px;
 }
 
 .mobile-menu-btn svg {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
+  display: block;
 }
 
 .navbar-right {
@@ -112,38 +127,89 @@
   gap: 15px;
 }
 
+.mobile-menu-action {
+  display: none;
+  width: 100%;
+  padding: 16px 24px;
+}
+
 @media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar-logo a {
+    font-size: 1.15rem;
+  }
+
+  .navbar-logo .logo-badge {
+    display: none;
   }
 
   .navbar-links {
     position: absolute;
-    top: 72px;
+    top: 64px;
     left: 0;
     width: 100%;
-    background-color: rgba(19, 27, 46, 0.98);
-    backdrop-filter: blur(16px);
+    background-color: rgba(10, 14, 23, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 0;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid transparent;
   }
 
   .navbar-links.active {
-    max-height: 350px;
-    border-bottom: 1px solid var(--border-color);
+    max-height: 420px;
+    border-bottom-color: var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 
   .nav-link {
     width: 100%;
     padding: 14px 24px;
-    text-align: center;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-link::after {
+    display: none;
   }
 
   .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(16, 185, 129, 0.08);
+    padding-left: 30px;
+  }
+
+  .mobile-menu-action {
+    display: block;
+  }
+
+  .mobile-resume-btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    margin-top: 4px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .navbar-logo .logo-badge {
+    display: inline-block;
   }
 }
