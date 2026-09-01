@@ -7,7 +7,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -15,27 +15,74 @@ export default function Contact() {
     const templateID = 'template_36pgp2u';
     const publicKey = 'JghsvFziuEDiNsa8b';
 
+    const submissionTime = new Date().toLocaleString('en-IN', {
+      timeZone: 'Asia/Kolkata',
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    }) + ' (IST)';
+
     const templateParams = {
       name: formData.name,
+      from_name: formData.name,
       email: formData.email,
+      from_email: formData.email,
+      reply_to: formData.email,
       message: formData.message,
+      submitted_at: submissionTime,
     };
 
-    emailjs.send(serviceID, templateID, templateParams, publicKey)
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
+    // Tier 1: EmailJS
+    try {
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      setSubmitted(true);
+      setLoading(false);
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+      return;
+    } catch (err1) {
+      console.log('EmailJS failed, trying direct FormSubmit service...', err1);
+    }
+
+    // Tier 2: FormSubmit.co API (Delivers directly to aswajithpp45@gmail.com)
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/aswajithpp45@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          submission_time: submissionTime,
+          _subject: `QA Portfolio Inquiry from ${formData.name}`
+        })
+      });
+
+      const resData = await response.json();
+      if (response.ok || resData.success === 'true') {
         setSubmitted(true);
         setLoading(false);
-        setTimeout(() => {
-          setSubmitted(false);
-          setFormData({ name: '', email: '', message: '' });
-        }, 4000);
-      })
-      .catch((err) => {
-        console.log('FAILED...', err);
-        setLoading(false);
-        alert('Failed to send message. Please try again later.');
-      });
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+        return;
+      }
+    } catch (err2) {
+      console.log('FormSubmit backup failed, using mailto link...', err2);
+    }
+
+    // Tier 3: Direct mailto link fallback
+    setLoading(false);
+    const subject = encodeURIComponent(`QA Portfolio Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Hi Aswajith,\n\n${formData.message}\n\nBest regards,\n${formData.name}\nEmail: ${formData.email}`
+    );
+    window.location.href = `mailto:aswajithpp45@gmail.com?subject=${subject}&body=${body}`;
+
+    setSubmitted(true);
+    setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   const handleChange = (e) => {
