@@ -1,59 +1,91 @@
 .skills-section {
-  padding: 40px 20px;
+  padding: 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.section-title {
-  font-size: 2.2rem;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  color: var(--text-primary);
+.skills-header {
+  margin-bottom: 40px;
 }
 
-.section-title::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
-  margin-left: 20px;
+.skills-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 700px;
+  margin-top: -10px;
 }
 
-.skills-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 24px;
 }
 
-.skill-category {
-  background-color: var(--bg-secondary);
+.skill-category-card {
+  background: var(--bg-card);
   border-radius: var(--radius);
-  padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 28px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+}
+
+.skill-category-card:hover {
+  border-color: var(--border-active);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.08);
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .category-title {
-  color: var(--accent);
-  font-size: 1.3rem;
-  margin-bottom: 15px;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .skills-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
 }
 
 .skill-pill {
-  background-color: rgba(0, 188, 212, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-primary);
-  border: 1px solid rgba(0, 188, 212, 0.3);
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
   transition: var(--transition);
 }
 
+.pill-check {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
 .skill-pill:hover {
-  background-color: var(--accent);
-  color: var(--bg-primary);
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--accent);
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
 }
