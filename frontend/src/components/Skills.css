@@ -17,7 +17,7 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
 
@@ -85,7 +85,19 @@
 }
 
 @media (max-width: 768px) {
+  .skills-section {
+    padding: 50px 16px;
+  }
+  
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .skill-category-card {
+    padding: 20px 16px;
+  }
+
+  .category-title {
+    font-size: 1.15rem;
   }
 }
